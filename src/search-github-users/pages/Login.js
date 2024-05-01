@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
+
 const Login = () => {
   return (
     <Wrapper>
       <div className='container'>
-        <img src='https://raw.githubusercontent.com/nurmukhamedov/react-projects/5d1fd4127aec4ec691d5deb0cc569ef42615baf1/react-project/src/components/search-github-users/images/login-img.svg' alt = 'github users'/>
+        <img src="https://raw.githubusercontent.com/nurmukhamedov/react-projects/46c5669bf29e9e3adc67c3819b301e41ee94b2c6/react-project/src/components/search-github-users/images/login-img.svg" alt = 'github users'/>
         <h1>github users</h1>
         <button className='btn'>
           Login / Sign Up
@@ -12,7 +13,7 @@ const Login = () => {
       </div>
     </Wrapper>
   )
-}
+} 
 
 const Wrapper = styled.section`
   min-height: 100vh;

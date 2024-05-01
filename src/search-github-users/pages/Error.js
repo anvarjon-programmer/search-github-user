@@ -1,8 +1,7 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
 import {Link} from 'react-router-dom';
-
 
 const Error = () => {
   return (
@@ -13,9 +12,8 @@ const Error = () => {
         <Link to='/' className='btn'>back to home</Link>
       </div>
     </Wrapper>
-
   )
-}
+};
 
 const Wrapper = styled.section`
   min-height: 100vh;

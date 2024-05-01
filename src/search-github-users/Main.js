@@ -1,16 +1,19 @@
-import React from 'react'
-import './Main.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import {Dashboard,AuthWrapper,Error,Login,PrivateRoute} from './pages'
+import React from 'react' 
+import { Dashboard, Login, PrivateRoute, AuthWrapper, Error } from './pages';  
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './Main.css';
+
+import './Main.css';
+
 const Main = () => {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Dashboard/>}/>
-      <Route path='login' element={<Login/>}/>
-      <Route path='*' element={<Error/>}/>
-    </Routes>
-    </BrowserRouter>
+    <Router> 
+      <Routes>
+        <Route path='/' element= { <Dashboard/> } />
+        <Route path='login' element= {<Login/>} /> 
+        <Route path='*' element={<Error />} />
+      </Routes>
+    </Router>
   )
 }
 

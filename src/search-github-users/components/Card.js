@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
-import { GithubContext } from '../context/context';
 
 const Card = () => {
-  const {githubUser} = React.useContext(GithubContext);
-  const {avatar_url,html_url,name,company,blog,bio,location,twitter_username} = githubUser
+    const {githubUser} = React.useContext(GithubContext);
+    
+    const {avatar_url, html_url, name, company, blog, bio, location, twitter_username,} = githubUser;
   return (
-    <Wrapper>
-        <header className='followers'>
+     <Wrapper>
+        <header>
             <img src={avatar_url} alt={name} />
             <div>
                 <h4>{name}</h4>
@@ -28,11 +29,10 @@ const Card = () => {
         </div>
      </Wrapper>
   )
-}
+} 
 
 const Wrapper = styled.article`
   background: var(--clr-white);
-  
   padding: 1.5rem 2rem;
   border-top-right-radius: var(--radius);
   border-bottom-left-radius: var(--radius);

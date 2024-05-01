@@ -1,122 +1,81 @@
 import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
-import { GoRepo } from "react-icons/go";
-import { FiUsers } from "react-icons/fi";
-import { FiUserPlus } from "react-icons/fi";
 
-const Info = () => { 
-  const {githubUser} = React.useContext(GithubContext);
-  const {public_repos, followers, following, public_gists} = githubUser; 
-  
-  const items = [
-    {
-      id: 1,
-      icon: <GoRepo className='icon' />,
-      label: 'repos',
-      value: public_repos,
-      color: 'pink',
-    },
-    {
-      id: 2,
-      icon: <FiUsers className='icon' />,
-      label: 'followers',
-      value: followers,
-      color: 'green',
-    },
-    {
-      id: 3,
-      icon: <FiUserPlus  className='icon' />,
-      label: 'following',
-      value: following,
-      color: 'purple',
-    },
-    {
-      id: 4,
-      icon: <GoRepo className='icon' />,
-      label: 'gists',
-      value: public_gists,
-      color: 'yellow',
-    },
-  ];
-  
+const Followers = () => {
+   const {followers} = React.useContext(GithubContext);
+   
   return (
-    <section className='section'>
-      <Wrapper className='section-center'>
-         {items.map((item) => {
-          return <Item key={item.id} {...item}></Item>
-         })}
-         sdsd
+      <Wrapper>
+        <div className='followers'>
+           { followers.map((follower, index) => { 
+             const {avatar_url:img, html_url, login} = follower;
+             return (
+              <article key={index}>
+                <img src= {img} alt={login} />
+              <div>
+                <h4> {login}</h4>
+                <a href= {html_url}> {html_url} </a>
+              </div>
+              </article>
+             )
+           }) }
+        </div>
       </Wrapper>
-    </section>
   )
 } 
 
-const Item = ({icon, label, value, color}) => {
-  return (
-    <article className='item'>
-      <span className={color}>
-        {icon}
-      </span>
-      <div>
-        <h3>{value}</h3>
-        <p>{label}</p>
-      </div>
-    </article>
-  ) 
-}
+const Wrapper = styled.article`
+  background: var(--clr-white);
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  position: relative;
 
-const Wrapper = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem 2rem;
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-  .item {
-    border-radius: var(--radius);
-    padding: 1rem 2rem;
+  &::before {
+    content: ' followers';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
     background: var(--clr-white);
+    color: var(--clr-grey-5);
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+    text-transform: capitalize;
+    padding: 0.5rem 1rem 0 1rem;
+    letter-spacing: var(--spacing);
+    font-size: 1rem;
+  }
+  .followers {
+    overflow: scroll;
+    height: 260px;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 1.25rem 1rem;
+    padding: 1rem 2rem;
+  }
+  article {
+    transition: var(--transition);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius);
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 3rem;
     align-items: center;
-    span {
-      width: 3rem;
-      height: 3rem;
-      display: grid;
-      place-items: center;
+    column-gap: 1rem;
+    img {
+      height: 100%;
+      width: 45px;
       border-radius: 50%;
+      object-fit: cover;
     }
-    .icon {
-      font-size: 1.5rem;
-    }
-    h3 {
+    h4 {
       margin-bottom: 0;
-      letter-spacing: 0;
     }
-    p {
-      margin-bottom: 0;
-      text-transform: capitalize;
-    }
-    .pink {
-      background: #ffe0f0;
-      color: #da4a91;
-    }
-    .green {
-      background: var(--clr-primary-10);
-      color: var(--clr-primary-5);
-    }
-    .purple {
-      background: #e6e6ff;
-      color: #5d55fa;
-    }
-    .yellow {
-      background: #fffbea;
-      color: #f0b429;
+    a {
+      color: var(--clr-grey-5);
     }
   }
 `;
 
-
-export default Info
+export default Followers

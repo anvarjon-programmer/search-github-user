@@ -1,9 +1,7 @@
-import Card from "./Card";
-import Followers from "./Followers";
 import Info from "./Info";
-import Navbar from "./Navbar";
 import Repos from "./Repos";
-import Search from "./Search";
 import User from "./User";
+import Search from "./Search";
+import Navbar from "./Navbar";
 
-export {Card,Followers,Info,Navbar,Repos,Search,User}
+export { Info, Repos, User, Search, Navbar };
